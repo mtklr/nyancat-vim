@@ -302,7 +302,7 @@ endfunction
 
 function! s:GDocUpdate(doc, ev)
   " Check termination.
-  if a:ev == 27
+  if a:ev
     return 0
   endif
 
