@@ -60,6 +60,10 @@ function! s:GameOpen()
   for i in s:ROWS
     call add(doc.screenBuffer, s)
   endfor
+  " save t_ve (cursor visible) sequence
+  let g:save_t_ve = &t_ve
+  " turn off t_ve (hides cursor)
+  set t_ve =
   call s:ColorInit()
   call s:GDocInit(doc)
   return doc
@@ -88,6 +92,8 @@ function! s:GameClose(doc)
   let &cmdheight = s:cmdheight_value
   let &undolevels = s:undolevels_value
   let &list = s:list_value
+  " restore t_ve (cursor visible) sequence
+  let &t_ve = g:save_t_ve
   return get(a:doc, 'title', 'GAME END')
 endfunction
 
