@@ -53,6 +53,7 @@ function! s:GameOpen()
   endif
   set undolevels=-1
   setlocal nolist
+  setlocal nowrap
   " Initialize screen buffer
   let doc = {}
   let doc.screenBuffer = []
