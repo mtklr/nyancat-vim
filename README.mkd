@@ -9,8 +9,7 @@ or
 
 Enjoy it!
 
-To terminate animation, type ESC key.
-
+Press any key to terminate animation.
 
 # Install
 
@@ -27,8 +26,26 @@ After installation, you can start animation with below commands.
     :Nyancat
     :Nyancat2
 
+# Vim "screensaver"
 
-# Contributers
+Add to `~/.vimrc`:
+
+``` vim
+augroup Nyancat
+  au!
+  " timeout in ms (5 minutes), also used for swapfile, see help 'updatetime'
+  set updatetime=300000
+  au CursorHold * nested Nyancat
+augroup END
+```
+
+Disable:
+
+``` vim
+augroup! nyancat
+```
+
+# Contributors
 
 *   mattn <https://github.com/mattn/>
 *   Göran Gustafsson <https://github.com/ggustafsson>
