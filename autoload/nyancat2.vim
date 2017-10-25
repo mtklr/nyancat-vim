@@ -43,7 +43,9 @@ function! s:GameOpen()
   let s:cmdheight_value = &cmdheight
   let s:undolevels_value = &undolevels
   let s:list_value = &list
-  enew
+  let s:showtabline_value = &showtabline
+  set showtabline=0
+  tabnew nyancat
   set nonumber
   set lazyredraw
   setlocal nofoldenable
@@ -96,6 +98,8 @@ function! s:GameClose(doc)
   let &list = s:list_value
   " restore t_ve (cursor visible) sequence
   let &t_ve = g:save_t_ve
+  let &showtabline = s:showtabline_value
+  silent exe "bdelete\n"
   return get(a:doc, 'title', 'GAME END')
 endfunction
 
